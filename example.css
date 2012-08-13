@@ -1,0 +1,42 @@
+body
+{
+    background-color: white;
+    color: #333;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 10pt;
+    padding: 3em;
+}
+
+ul#posts
+{
+    list-style-type: none;
+    padding: 0;
+    margin: 2em 0;
+    width: 600px;
+    overflow: hidden;
+}
+
+ul#posts li
+{
+    padding: 1em;
+    margin: 0;
+}
+
+ul#posts li.even
+{
+    background-color: #eaeaea;
+}
+
+ul#posts h3
+{
+    margin: 0 0 1em 0;
+    padding: 0;
+    font-size: 110%;
+    font-weight: 800;
+}
+
+p.signout
+{
+    margin-top: 3em;
+    clear: both;
+}
