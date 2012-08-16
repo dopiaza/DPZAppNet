@@ -1,5 +1,4 @@
 <?php
-
 /**
  * App.net API Kit for PHP5. Requires curl.
  *
@@ -22,8 +21,9 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  */
+namespace DPZF;
 
-class DPZFAppNet
+class AppNet
 {
     const VERSION = 0.1;
 

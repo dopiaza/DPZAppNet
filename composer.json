@@ -1,0 +1,17 @@
+{
+    "name": "dpzf/appnet",
+    "description": "PHP client library for app.net.",
+    "require": {
+        "ext-curl": "0"
+    },
+    "autoload": {
+        "psr-0": {
+            "DPZF": "src/"
+        }  
+    },
+    "authors": [
+        {
+            "name": "David Wilkinson"
+        }
+    ]
+}
