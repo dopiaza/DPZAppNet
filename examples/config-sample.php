@@ -17,4 +17,4 @@ $appNetClientSecret = 'PUT_YOUR_APP_NET_CLIENT_SECRET_HERE';
 // then you need to set this to the path to DPZAppNet (in this example, '/stuff/dpzappnet'). Do not include any
 // trailing slashes.
 
-$appNetRedirectPathPrefix = '';
+$appNetRedirectPathPrefix = '/examples';

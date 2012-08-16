@@ -11,12 +11,19 @@ else
     die("Please rename the config-sample.php file to config.php and add your App.net client id and secret to it\n");
 }
 
+spl_autoload_register(function($className)
+{
+    $className = str_replace ('\\', DIRECTORY_SEPARATOR, $className);
+    include (dirname(__FILE__) . '/../src/' . $className . '.php');
+});
+
 /**
  * Or use this: 
  * `./composer.phar install`
  * require_once dirname(__DIR__) . '/vendor/autoload.php';
  */
-require_once dirname(__DIR__) . '/src/DPZ/AppNet.php';
+
+use \DPZ\AppNet;
 
 // We need to set up the callback for the authentication process - this must match the redirect URI set up for this
 // client id on app.net. For this example, the redirect uri must point at our example-auth.php script.
@@ -27,7 +34,7 @@ $callback = sprintf('%s://%s%s%s/example-auth.php',
     $appNetRedirectPathPrefix
     );
 
-$appNet = new \DPZF\AppNet($appNetClientId, $appNetClientSecret, $callback);
+$appNet = new AppNet($appNetClientId, $appNetClientSecret, $callback);
 
 
 if (!$appNet->authenticate('stream write_post'))
@@ -35,8 +42,8 @@ if (!$appNet->authenticate('stream write_post'))
     die("Hmm, something went wrong...\n");
 }
 
-$username = $appNet->getOauthData(DPZFAppNet::USER_NAME);
-$userId = $appNet->getOauthData(DPZFAppNet::USER_ID);
+$username = $appNet->getOauthData(AppNet::USER_NAME);
+$userId = $appNet->getOauthData(AppNet::USER_ID);
 
 $user = $appNet->call(sprintf('/stream/0/users/%d', $userId));
 

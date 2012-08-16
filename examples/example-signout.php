@@ -11,9 +11,21 @@ else
     die("Please rename the config-sample.php file to config.php and add your App.net client id and secret to it\n");
 }
 
-require_once dirname(__FILE__) . '/DPZAppNet.php';
+spl_autoload_register(function($className)
+{
+    $className = str_replace ('\\', DIRECTORY_SEPARATOR, $className);
+    include (dirname(__FILE__) . '/../src/' . $className . '.php');
+});
 
-$appNet = new DPZFAppNet($appNetClientId, $appNetClientSecret);
+/**
+ * Or use this:
+ * `./composer.phar install`
+ * require_once dirname(__DIR__) . '/vendor/autoload.php';
+ */
+
+use \DPZ\AppNet;
+
+$appNet = new AppNet($appNetClientId, $appNetClientSecret);
 
 $appNet->signout();
 
