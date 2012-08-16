@@ -11,7 +11,12 @@ else
     die("Please rename the config-sample.php file to config.php and add your App.net client id and secret to it\n");
 }
 
-require_once dirname(__FILE__) . '/DPZAppNet.php';
+/**
+ * Or use this: 
+ * `./composer.phar install`
+ * require_once dirname(__DIR__) . '/vendor/autoload.php';
+ */
+require_once dirname(__DIR__) . '/src/DPZ/AppNet.php';
 
 // We need to set up the callback for the authentication process - this must match the redirect URI set up for this
 // client id on app.net. For this example, the redirect uri must point at our example-auth.php script.
@@ -22,7 +27,7 @@ $callback = sprintf('%s://%s%s%s/example-auth.php',
     $appNetRedirectPathPrefix
     );
 
-$appNet = new DPZFAppNet($appNetClientId, $appNetClientSecret, $callback);
+$appNet = new \DPZF\AppNet($appNetClientId, $appNetClientSecret, $callback);
 
 
 if (!$appNet->authenticate('stream write_post'))
